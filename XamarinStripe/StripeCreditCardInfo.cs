@@ -34,6 +34,7 @@ namespace Xamarin.Payments.Stripe {
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public string ZipCode { get; set; }
+        public string City { get; set; }
         public string StateOrProvince { get; set; }
         public string Country { get; set; }
 
@@ -64,7 +65,9 @@ namespace Xamarin.Payments.Stripe {
             if (!String.IsNullOrEmpty (AddressLine2))
                 sb.AppendFormat ("card[address_line2]={0}&", HttpUtility.UrlEncode (AddressLine2));
             if (!String.IsNullOrEmpty (ZipCode))
-                sb.AppendFormat ("card[address_zip]={0}&", HttpUtility.UrlEncode (ZipCode));
+                sb.AppendFormat("card[address_zip]={0}&", HttpUtility.UrlEncode(ZipCode));
+            if (!String.IsNullOrEmpty(City))
+                sb.AppendFormat("card[address_city]={0}&", HttpUtility.UrlEncode(City));
             if (!String.IsNullOrEmpty (StateOrProvince))
                 sb.AppendFormat ("card[address_state]={0}&", HttpUtility.UrlEncode (StateOrProvince));
             if (!String.IsNullOrEmpty (Country))
