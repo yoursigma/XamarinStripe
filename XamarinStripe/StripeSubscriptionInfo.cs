@@ -27,19 +27,24 @@ namespace Xamarin.Payments.Stripe {
 
         public string Coupon { get; set; }
 
-        public bool? Prorate { get; set; }
-
         public DateTime? TrialEnd { get; set; }
 
         public StripeCreditCardInfo Card { get; set; }
+
+        public decimal? ApplicationFeePercentage { get; set; }
+
+        public int? Quantity { get; set; }
+
 
         public virtual void UrlEncode (StringBuilder sb)
         {
             sb.AppendFormat ("plan={0}&", HttpUtility.UrlEncode (Plan));
             if (!string.IsNullOrEmpty (Coupon))
                 sb.AppendFormat ("coupon={0}&", HttpUtility.UrlEncode (Coupon));
-            if (Prorate != null && Prorate.HasValue)
-                sb.AppendFormat ("prorate={0}&", Prorate.Value.ToString (CultureInfo.InvariantCulture).ToLowerInvariant ());
+            if (ApplicationFeePercentage != null && ApplicationFeePercentage.HasValue)
+                sb.AppendFormat("application_fee_percent={0}&", ApplicationFeePercentage.Value.ToString(CultureInfo.InvariantCulture).ToLowerInvariant());
+            if (Quantity != null && Quantity.HasValue)
+                sb.AppendFormat("quantity={0}&", Quantity.Value.ToString(CultureInfo.InvariantCulture).ToLowerInvariant());
             if (TrialEnd != null)
                 sb.AppendFormat ("trial_end={0}&", TrialEnd.Value.ToUnixEpoch ());
             if (Card != null)

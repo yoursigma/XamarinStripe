@@ -174,8 +174,7 @@ namespace PaymentTest {
             StripePlan plan = CreatePlan (payment);
             StripeSubscription sub = payment.Subscribe (cust.ID, new StripeSubscriptionInfo {
                 Card = GetCC (),
-                Plan = "myplan",
-                Prorate = true
+                Plan = "myplan"
             });
             StripeSubscription sub2 = payment.GetSubscription (sub.CustomerID);
             TestDeleteSubscription (cust, payment);
@@ -235,8 +234,7 @@ namespace PaymentTest {
             StripePlan plan = payment.CreatePlan (planInfo);
             StripeSubscriptionInfo subInfo = new StripeSubscriptionInfo{
                 Card = GetCC (),
-                Plan = planInfo.ID,
-                Prorate = true
+                Plan = planInfo.ID
             };
             StripeSubscription sub = payment.Subscribe (cust.ID, subInfo);
             payment.CreateInvoiceItem (new StripeInvoiceItemInfo {
