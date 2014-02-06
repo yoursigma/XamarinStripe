@@ -43,6 +43,9 @@ namespace Xamarin.Payments.Stripe {
         [JsonProperty (PropertyName = "interval")]
         public StripePlanInterval Interval { get; set; }
 
+        [JsonProperty(PropertyName = "interval_count")]
+        public int IntervalCount { get; set; }
+
         [JsonProperty (PropertyName = "name")]
         public string Name { get; set; }
 
